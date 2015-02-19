@@ -1,0 +1,33 @@
+.chat {
+  padding: 30px 15px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color: #eee;
+  padding-right: 60px;
+  padding-left: 60px;
+  border-radius: 6px;
+}
+
+.room {
+	/*padding: 4px;*/
+	background-color: #fff;
+	height: 200px;
+	overflow: auto;
+	border: 1px solid #9e9e9e;
+}
+
+.room div:nth-child(even) p{
+   background-color: #eee;
+}
+
+.room div span{
+   width: 13%;
+}
+
+.newMessage {
+	padding-top: 5px;
+}
+
+footer p {
+	text-align: center;
+}
