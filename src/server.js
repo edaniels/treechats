@@ -31,12 +31,14 @@ ioServer.on('connection', function(socket) {
 			if (err) {
 				console.log(err);
 			} else {
+				console.log('Sending past messages: ' + JSON.stringify(docs));
 				socket.emit('gotPastMessages', docs);
 			}
 		});
 	})
 
 	socket.on('newMessage', function(message){
+		console.log('Inserting: ' + JSON.stringify(message));
 		db.collection('messages').insert(message, function(err, result) {
 			if (err) {
 				console.log(err);

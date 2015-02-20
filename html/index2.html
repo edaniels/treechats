@@ -56,7 +56,7 @@
           return newMessage;
         }
 
-        var chat = io();
+        var chat = io(), connectedOnce = false;
         $('form').submit(function(e){
           e.preventDefault();
           var messageInput = $('#newMessage');
@@ -73,7 +73,10 @@
         });
 
         chat.on('connect', function() {
-          chat.emit('getPastMessages');
+          if (!connectedOnce) {
+            connectedOnce = true;
+            chat.emit('getPastMessages');
+          }
         });
 
         chat.on('gotPastMessages', function(messages) {
