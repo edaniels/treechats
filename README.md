@@ -17,3 +17,6 @@ npm install
 ```
 cd src; node server.js
 ```
+
+# Disclaimer
+The code contained within here is not intended for use in production environments. Use at your own risk.
