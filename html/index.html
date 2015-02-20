@@ -48,7 +48,7 @@
         }
 
         function makeMessage(messageObj) {
-          var newMessage = $('<div>');
+          var newMessage = $('<div class="row message">');
           newMessage.append($('<p class="col-md-12">').text(messageObj.message));
           return newMessage;
         }

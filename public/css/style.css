@@ -1,31 +1,32 @@
 .chat {
-  padding: 30px 15px;
-  margin-bottom: 30px;
-  color: inherit;
+  padding: 3em;
   background-color: #eee;
-  padding-right: 60px;
-  padding-left: 60px;
-  border-radius: 6px;
+  border-radius: 1em;
 }
 
 .room {
-	/*padding: 4px;*/
+	padding: 1em;
 	background-color: #fff;
-	height: 200px;
+	height: 50em;
 	overflow: auto;
-	border: 1px solid #9e9e9e;
+	border: 0.1em solid #9e9e9e;
+  border-radius: 0.2em;
 }
 
-.room div:nth-child(even) p{
+.message:nth-child(even){
    background-color: #eee;
 }
 
-.room div span{
+.room div span {
    width: 13%;
 }
 
+.message {
+  border-bottom: 0.1em solid #9e9e9e;
+}
+
 .newMessage {
-	padding-top: 5px;
+	padding-top: 1em;
 }
 
 footer p {

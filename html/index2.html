@@ -49,9 +49,9 @@
         }
 
         function makeMessage(messageObj) {
-          var newMessage = $('<div>');
+          var newMessage = $('<div class="row message">');
           var dateField = messageObj.date ? moment(messageObj.date).format('MM/DD HH:mm:ss') : 'N/A';
-          newMessage.append($('<span class="col-md-2">').text(dateField + ':'));
+          newMessage.append($('<span class="col-md-2">').text(dateField));
           newMessage.append($('<p class="col-md-10">').text(messageObj.message));
           return newMessage;
         }

@@ -14,14 +14,6 @@ var httpServer = http.Server(app);
 var ioServer = io(httpServer);
 var db;
 
-function getMessages(cb) {
-	db.collection('messages').find({}).toArray(cb);
-}
-
-function insertMessage(messageObj, cb) {
-	db.collection('messages').insert(messageObj, cb);
-}
-
 app.use('/static', express.static(ROOT_DIR + '/public'));
 
 app.get('/v1', function(req, res){
@@ -35,19 +27,32 @@ app.get('/v2', function(req, res){
 ioServer.on('connection', function(socket) {
 
 	socket.on('getPastMessages', function() {
-		getMessages(function(err, docs) {
-			socket.emit('gotPastMessages', docs);
+		db.collection('messages').find({}).toArray(function(err, docs) {
+			if (err) {
+				console.log(err);
+			} else {
+				socket.emit('gotPastMessages', docs);
+			}
 		});
 	})
 
 	socket.on('newMessage', function(message){
-		insertMessage(message, function(err, result) {
-			ioServer.emit('newMessage', message);
+		db.collection('messages').insert(message, function(err, result) {
+			if (err) {
+				console.log(err);
+			} else {
+				ioServer.emit('newMessage', message);
+			}
 		});
 	});
 });
 
 MongoClient.connect(MONGODB_URI, function(err, newDb) {
+
+	if (err) {
+		throw err;
+	}
+
 	db = newDb;
 	httpServer.listen(PORT, function(){
 	  console.log(util.format('Started TreeChats server on localhost:%d', PORT));
