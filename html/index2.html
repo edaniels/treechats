@@ -64,7 +64,7 @@
           if (message != '') {
             chat.emit('newMessage', {
               'message': message,
-              'date': new Date()
+              'date': moment().unix()*1000
             });
             // Clear  input
             messageInput.val('');
