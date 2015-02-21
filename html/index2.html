@@ -51,6 +51,8 @@
     <script>
       $(document).ready(function() {
 
+        setTimeout(function() { $('.webscale').effect('fade', 1000); }, 2000);
+
         function scrollChatToBottom() {
           $('.room').scrollTop($('.room')[0].scrollHeight);
         }
@@ -62,8 +64,6 @@
           newMessage.append($('<div class="col-md-10">').text(messageObj.message));
           return newMessage;
         }
-
-        setTimeout(function() { $('.webscale').effect('fade', 1000); }, 2000);
 
         var chat = io(), connectedOnce = false;
         $('form').submit(function(e){
