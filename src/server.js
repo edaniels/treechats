@@ -57,7 +57,7 @@ ioServer.on('connection', function(socket) {
 	})
 
 	socket.on('newMessage', function(message){
-		log(DEBUG, 'Inserting: ' + JSON.stringify(message));
+		log('Inserting: ' + JSON.stringify(message));
 		db.collection('messages').insert(message, function(err, result) {
 			if (err) {
 				log(err, ERROR);
