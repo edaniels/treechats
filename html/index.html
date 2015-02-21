@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  
   <head>
     <title>TreeChats</title>
     <meta charset="utf-8">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="static/css/style.css">
   </head>
+
   <body>
 
     <div class="container">
@@ -27,6 +29,9 @@
             </form>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-12 status">Disconnected</div>
+        </div>
       </div>
 
       <footer>
@@ -40,6 +45,7 @@
     <script src="static/js/underscore-min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
     <script src="static/js/socket.io.js"></script>
+
     <script>
       $(document).ready(function() {
 
@@ -49,7 +55,7 @@
 
         function makeMessage(messageObj) {
           var newMessage = $('<div class="row message">');
-          newMessage.append($('<p class="col-md-12">').text(messageObj.message));
+          newMessage.append($('<div class="col-md-12">').text(messageObj.message));
           return newMessage;
         }
 
@@ -69,15 +75,21 @@
         });
 
         chat.on('connect', function() {
+          $('form input')[0].removeAttribute('disabled');
+          $('.status').text('Connected');
           if (!connectedOnce) {
             connectedOnce = true;
             chat.emit('getPastMessages');
           }
         });
 
+        chat.on('disconnect', function() {
+          $('form input')[0].setAttribute('disabled', true);
+          $('.status').text('Disconnected');
+        });
+
         chat.on('gotPastMessages', function(messages) {
           // Add past messages
-          console.log('here');
           _.each(messages, function(message) {
             $('.room').append(makeMessage(message));
           })
@@ -87,9 +99,11 @@
         chat.on('newMessage', function(message){
             $('.room').append(makeMessage(message));
             scrollChatToBottom();
-            $('.room p:last').effect('highlight', {color: '#d9edf7'}, 500);
+            $('.message:last').effect('highlight', {color: '#d9edf7'}, 500);
           });
       });
     </script>
+
   </body>
+
 </html>

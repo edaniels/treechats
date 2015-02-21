@@ -1,34 +1,49 @@
 .chat {
-  padding: 3em;
-  background-color: #eee;
-  border-radius: 1em;
+  	padding: 3em;
+  	background-color: #eee;
+  	border-radius: 1em;
 }
 
 .room {
-	padding: 1em;
 	background-color: #fff;
 	height: 50em;
 	overflow: auto;
 	border: 0.1em solid #9e9e9e;
-  border-radius: 0.2em;
+  	border-radius: 0.2em;
 }
 
 .message:nth-child(even){
-   background-color: #eee;
+   	background-color: #eee;
 }
 
-.room div span {
-   width: 13%;
+.message span {
+	width: 13%;
 }
 
 .message {
-  border-bottom: 0.1em solid #9e9e9e;
+	padding: 0.5em;
+	border-bottom: 0.1em solid #9e9e9e;
 }
 
 .newMessage {
 	padding-top: 1em;
 }
 
+footer {
+	margin-top: 1em;
+}
+
 footer p {
 	text-align: center;
+}
+
+.status {
+	margin-top: 1em;
+	margin-bottom: -2em;
+	text-align: center;
+}
+
+.webscale {
+	position: absolute;
+	top: 0em;
 }
