@@ -1,3 +1,6 @@
+> **Warning**
+> This repository is no longer active and has been archived.
+
 # TreeChats
 Demo for TreeHacks | Winter 2015
 
